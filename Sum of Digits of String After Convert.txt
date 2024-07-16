@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <numeric>
+using namespace std;
+
+class Solution { //created the class name solution
+public:
+    int getLucky(string s, int k) {//created the pulic function getluck and defined the parameters S and k
+       string converted =""; //created a string name converted
+       //loop through each character in the input string s
+       for (char c :s ){
+        converted += to_string(c-'a'+1);
+               } 
+               int result = 0;//intialize the reult variable
+               //performs tranformation k times
+               for (int i= 0; i<k; i++){
+                result = 0;//reset result each transformation
+                for (char digit : converted){  // Loop through each digit in the converted string
+                    result += digit - '0';// Add the integer value of each digit to result
+                    
+                }
+                // Convert the result back to a string for the next iteration
+                converted = to_string(result);
+               }
+               // Return the final result after k transformations
+               return result;
+    }
+int main () {
+    solution solution;  // Create an instance of the Solution class
+    string s;
+    int k;
+    
+    cout<< "enter the string that you want to convert";
+    cin>> s;
+
+    cout << "enter the number of transformation";
+    cin >> k;
+
+    int result =solution.getlucky (s,k); // Call the getLucky method on the solution object with inputs s and k
+    cout << "result: "<<result<< endl;
+    return 0;
+}
+};
