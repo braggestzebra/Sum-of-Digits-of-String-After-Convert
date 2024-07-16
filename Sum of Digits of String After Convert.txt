@@ -1,43 +1,44 @@
 #include <iostream>
 #include <string>
-#include <numeric>
 using namespace std;
 
-class Solution { //created the class name solution
+class Solution {
 public:
-    int getLucky(string s, int k) { //created the public function getlucky and defined the parameters S and k
-       string converted =""; //created a string name converted
-       //loop through each character in the input string s
-       for (char c :s ){
-        converted += to_string(c-'a'+1);
-               } 
-               int result = 0;//initialize the result variable
-               //performs transformation k times
-               for (int i= 0; i<k; i++){
-                result = 0;//reset result each transformation
-                for (char digit : converted){  // Loop through each digit in the converted string
-                    result += digit - '0';// Add the integer value of each digit to result
-                    
-                }
-                // Convert the result back to a string for the next iteration
-                converted = to_string(result);
-               }
-               // Return the final result after k transformations
-               return result;
+    int getLucky(string s, int k) {
+        string converted = "";
+        // Loop through each character in the input string s
+        for (char c : s) {
+            converted += to_string(c - 'a' + 1); // Convert character to its corresponding numeric value
+        }
+
+        int result = 0;
+        // Perform transformation k times
+        for (int i = 0; i < k; i++) {
+            result = 0; // Reset result each transformation
+            for (char digit : converted) {
+                result += digit - '0'; // Add the integer value of each digit to result
+            }
+            // Convert the result back to a string for the next iteration
+            converted = to_string(result);
+        }
+        // Return the final result after k transformations
+        return result;
     }
-int main () {
-    Solution solution;  // Create an instance of the Solution class
+};
+
+int main() {
+    Solution solution; // Create an instance of the Solution class
     string s;
     int k;
     
-    cout<< "enter the string that you want to convert";
-    cin>> s;
+    cout << "Enter the string that you want to convert: ";
+    cin >> s;
 
-    cout << "enter the number of transformation";
+    cout << "Enter the number of transformations: ";
     cin >> k;
 
-    int result =solution.getLucky (s,k); // Call the getlucky method on the solution object with inputs s and k
-    cout << "result: "<<result<< endl;
+    int result = solution.getLucky(s, k); // Call the getLucky method on the solution object with inputs s and k
+    cout << "Result: " << result << endl;
+    
     return 0;
 }
-};
