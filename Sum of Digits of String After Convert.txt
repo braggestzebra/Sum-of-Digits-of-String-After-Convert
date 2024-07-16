@@ -12,13 +12,13 @@ public:
         }
 
         int result = 0;
-        // Perform transformation k times
+        // Performs transformation k times
         for (int i = 0; i < k; i++) {
-            result = 0; // Reset result each transformation
+            result = 0; // Reset result after each transformation
             for (char digit : converted) {
                 result += digit - '0'; // Add the integer value of each digit to result
             }
-            // Convert the result back to a string for the next iteration
+            // Converts the result back to a string for the next iteration
             converted = to_string(result);
         }
         // Return the final result after k transformations
